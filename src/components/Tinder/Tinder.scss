@@ -11,12 +11,23 @@
     height: 100%;
   }
 
-  &__inner-card {
+  &__wrapper-inner-card {
     position: relative;
     height: 100%;
   }
 
+  &__inner-card {
+    height: 100%;
+  }
+
+  &__image {
+    transition: all 0.3s ease-in-out;
+  }
+
   &__dislike {
+    width: 228px;
+    height: 160px;
+
     position: absolute;
     top: 3%;
     left: 0;
@@ -24,6 +35,9 @@
   }
 
   &__like {
+    width: 204px;
+    height: 167px;
+
     position: absolute;
     top: 5%;
     right: 0;
@@ -38,13 +52,13 @@
     position: relative;
     overflow: hidden;
 
-    &_cancel,
-    &_like {
+    &_left,
+    &_right {
       background-repeat: no-repeat;
       background-position: center center;
     }
 
-    &_cancel {
+    &_left {
       &::after,
       &::before {
         content: '';
@@ -79,7 +93,7 @@
       }
     }
 
-    &_like {
+    &_right {
       &::after,
       &::before {
         content: '';

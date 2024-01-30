@@ -5,6 +5,28 @@ body {
   margin: 0;
 }
 
+.unscale {
+  transform: scale(0.5);
+  opacity: 0;
+}
+
+.scale-small {
+  transform: scale(1.35);
+}
+
+.hover-target-element {
+  transition: all 0.35s ease-in-out;
+  transform-origin: 50% 74%;
+}
+
+.hover-rotate-animate-right {
+  transform: rotate(3.5deg);
+}
+
+.hover-rotate-animate-left {
+  transform: rotate(-3.5deg);
+}
+
 #root {
   font-family: "Museo", sans-serif;
   position: relative;

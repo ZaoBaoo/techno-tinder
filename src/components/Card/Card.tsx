@@ -1,12 +1,12 @@
 import './Card.scss';
 import { useEffect, useState } from 'react';
-import { motion, useMotionValue, useTransform, AnimatePresence, PanInfo } from 'framer-motion';
+import { motion, useMotionValue, useTransform, PanInfo } from 'framer-motion';
 import { useAppSelector } from '../../hooks/store';
 
 const Card = (props: any) => {
   const { setIndex, index, drag, frontCard } = props;
   const [exitX, setExitX] = useState(0);
-  const { swipeType, swipeIndex } = useAppSelector((state) => state.popupData);
+  const { swipeType, swipeIndex } = useAppSelector((state) => state.app);
 
   const x = useMotionValue(0);
   const scale = useTransform(x, [-484, 0, 484], [0.5, 1, 0.5]);
@@ -44,10 +44,11 @@ const Card = (props: any) => {
       if (swipeType === 'left') {
         setExitX(-250);
         setIndex(index + 1);
-      } else {
-        setExitX(250);
-        setIndex(index + 1);
       }
+      // else {
+      //   setExitX(250);
+      //   setIndex(index + 1);
+      // }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [swipeType, swipeIndex]);

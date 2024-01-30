@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import popupReducer from './reducers/popup';
+import appReducer from './reducers/app';
 
 const store = configureStore({
   reducer: {
-    popupData: popupReducer,
+    app: appReducer,
   },
 });
 

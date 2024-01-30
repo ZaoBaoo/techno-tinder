@@ -25,6 +25,8 @@ module.exports = {
     'import/prefer-default-export': 0,
     'no-param-reassign': 0,
     "react/button-has-type": 0,
-    "jsx-a11y/control-has-associated-label": 0
+    "jsx-a11y/control-has-associated-label": 0,
+    "jsx-a11y/mouse-events-have-key-events": 0,
+    "react/react-in-jsx-scope": 0
   },
 };
