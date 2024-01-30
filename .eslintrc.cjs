@@ -23,6 +23,8 @@ module.exports = {
     'react/react-in-jsx-scope': 1,
     'react/function-component-definition': 0,
     'import/prefer-default-export': 0,
-    'no-param-reassign': 0
+    'no-param-reassign': 0,
+    "react/button-has-type": 0,
+    "jsx-a11y/control-has-associated-label": 0
   },
 };

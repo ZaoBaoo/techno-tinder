@@ -1,0 +1,20 @@
+import './Header.scss';
+import { FC } from 'react';
+
+const Header: FC = () => {
+  return (
+    <div className="header">
+      <img
+        className="header__image"
+        src="https://www.technodom.kz/under/techno-tinder/header-title.svg"
+        alt="header"
+        width="596px"
+        height="74px"
+      />
+
+      <h1 className="header__title">Выбирай себе пару и забирай промокод со скидкой!</h1>
+    </div>
+  );
+};
+
+export { Header };

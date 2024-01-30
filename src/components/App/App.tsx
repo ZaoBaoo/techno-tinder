@@ -1,24 +1,21 @@
+import './App.scss';
 import { FC } from 'react';
-import style from './App.module.scss';
-import { useAppDispatch, useAppSelector } from '../../hooks/store';
-import { setIsPopupOpenAction } from '../../store/reducers/popup';
+
+// Components
+import { Header } from '../Header/Header';
+import { Tinder } from '../Tinder/Tinder';
 
 const App: FC = () => {
-  const { isPopupOpen, popupType } = useAppSelector((state) => state.popupData);
-  const dispatch = useAppDispatch();
-
-  const handlerOpenPopup = () => {
-    dispatch(setIsPopupOpenAction(true));
-  };
   return (
-    <>
-      <div className={style.app}>Main</div>
-      <div>Popup status: {isPopupOpen ? 'true' : 'false'}</div>
-      <button type="button" onClick={handlerOpenPopup}>
-        click
-      </button>
-    </>
+    <div className="app">
+      <div className="app__content">
+        <Header />
+        <Tinder />
+      </div>
+    </div>
   );
 };
 
 export { App };
+
+// https://www.technodom.kz/under/techno-tinder/
