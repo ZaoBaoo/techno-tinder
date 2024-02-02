@@ -1,9 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import type { IStage } from '../../types';
 
 export type ISwipe = null | 'left' | 'right';
-
-export type IStage = 'swipe' | 'view';
 
 interface IApp {
   swipeType: ISwipe;

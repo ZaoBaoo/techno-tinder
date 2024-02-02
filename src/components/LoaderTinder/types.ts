@@ -1,0 +1,3 @@
+interface ILoaderTinder {
+  isLoaderView: boolean;
+}

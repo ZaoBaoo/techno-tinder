@@ -5,28 +5,6 @@ body {
   margin: 0;
 }
 
-.unscale {
-  transform: scale(0.5);
-  opacity: 0;
-}
-
-.scale-small {
-  transform: scale(1.35);
-}
-
-.hover-target-element {
-  transition: all 0.35s ease-in-out;
-  transform-origin: 50% 74%;
-}
-
-.hover-rotate-animate-right {
-  transform: rotate(3.5deg);
-}
-
-.hover-rotate-animate-left {
-  transform: rotate(-3.5deg);
-}
-
 #root {
   font-family: "Museo", sans-serif;
   position: relative;
@@ -51,4 +29,85 @@ body {
     border: none;
     padding: 0;
   }
+
+  .unscale {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  .scale-small {
+    transform: scale(1.35);
+  }
+
+  .hover-target-element {
+    transition: all 0.35s ease-in-out;
+    transform-origin: 50% 74%;
+  }
+
+  .hover-rotate-animate-right {
+    transform: rotate(3.5deg);
+  }
+
+  .hover-rotate-animate-left {
+    transform: rotate(-3.5deg);
+  }
+
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      display: none;
+    }
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .fadeOut {
+    animation: fadeOut 0.5s ease-in-out forwards;
+  }
+
+  .fadeIn {
+    animation: fadeIn 0.5s ease-in-out forwards;
+  }
+
+  .loader-wrapper {
+    position: absolute;
+    z-index: 120;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .loader {
+    width: 180px;
+    height: 30px;
+    border-radius: 20px;
+    color: #fff;
+    border: 2px solid;
+    position: relative;
+  }
+
+  .loader::before {
+    content: "";
+    position: absolute;
+    margin: 2px;
+    inset: 0 100% 0 0;
+    border-radius: inherit;
+    background: currentColor;
+    animation: l6 2s infinite;
+  }
+
+  @keyframes l6 {
+    100% {inset:0}
+  }
 }
+

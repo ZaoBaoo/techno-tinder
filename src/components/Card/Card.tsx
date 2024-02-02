@@ -4,7 +4,7 @@ import { motion, useMotionValue, useTransform, PanInfo } from 'framer-motion';
 import { useAppSelector } from '../../hooks/store';
 
 const Card = (props: any) => {
-  const { setIndex, index, drag, frontCard } = props;
+  const { setIndex, index = 0, drag, frontCard, products } = props;
   const [exitX, setExitX] = useState(0);
   const { swipeType, swipeIndex } = useAppSelector((state) => state.app);
 
@@ -45,10 +45,6 @@ const Card = (props: any) => {
         setExitX(-250);
         setIndex(index + 1);
       }
-      // else {
-      //   setExitX(250);
-      //   setIndex(index + 1);
-      // }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [swipeType, swipeIndex]);
@@ -82,19 +78,19 @@ const Card = (props: any) => {
       <motion.div>
         <div className="card">
           <div className="card__place">
-            <img className="card__image" src="https://www.technodom.kz/under/techno-tinder/placeholder.png" alt="" />
+            <img className="card__image" src={products[index].image} alt="" />
           </div>
 
-          <p className="card__text">Смартфон Apple iPhone 15 128GB Blue [{index}]</p>
+          <p className="card__text">{products[index].title}</p>
 
           <div className="card__footer">
             <p className="card__text-price">цена по промокоду:</p>
             <div className="card__wrapper-price">
               <p className="card__price">
-                <span>869 990</span> ₸
+                <span>{products[index].newPrice}</span> ₸
               </p>
               <p className="card__old-price">
-                <span>8 369 990</span> ₸
+                <span>{products[index].oldPrice}</span> ₸
               </p>
             </div>
           </div>
@@ -102,28 +98,6 @@ const Card = (props: any) => {
       </motion.div>
     </motion.div>
   );
-
-  // return (
-  //   <div className="card">
-  //     <div className="card__place">
-  //       <img className="card__image" src="https://www.technodom.kz/under/techno-tinder/placeholder.png" alt="" />
-  //     </div>
-  //
-  //     <p className="card__text">Смартфон Apple iPhone 15 128GB Blue (MTP43)</p>
-  //
-  //     <div className="card__footer">
-  //       <p className="card__text-price">цена по промокоду:</p>
-  //       <div className="card__wrapper-price">
-  //         <p className="card__price">
-  //           <span>869 990</span> ₸
-  //         </p>
-  //         <p className="card__old-price">
-  //           <span>8 369 990</span> ₸
-  //         </p>
-  //       </div>
-  //     </div>
-  //   </div>
-  // );
 };
 
 export { Card };

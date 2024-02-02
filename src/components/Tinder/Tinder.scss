@@ -1,19 +1,54 @@
 #root .tinder {
   width: 1000px;
   height: 638px;
+  position: relative;
 
   &__control {
-    display: grid;
-    grid-template-columns: 190px 484px 190px;
+    display: flex;
     justify-content: center;
     align-items: center;
     gap: 68px;
     height: 100%;
+    transition: all 0.5s ease-in-out;
+    position: relative;
   }
 
   &__wrapper-inner-card {
-    position: relative;
+    position: absolute;
     height: 100%;
+    width: 100%;
+    max-width: 484px;
+    transition: left 0.5s ease-in-out;
+
+    &_absolute {
+      animation: slideLeft 0.5s ease-in-out forwards;
+    }
+
+    &_default {
+      animation: slideDefault 0.5s ease-in-out forwards;
+    }
+  }
+
+  @keyframes slideLeft {
+    from {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    to {
+      left: 0;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideDefault {
+    from {
+      left: 0;
+      transform: translateX(0);
+    }
+    to {
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
 
   &__inner-card {
@@ -42,90 +77,5 @@
     top: 5%;
     right: 0;
     transform: translateX(60%);
-  }
-
-  &__button {
-    width: 190px;
-    height: 190px;
-    border-radius: 44px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-
-    &_left,
-    &_right {
-      background-repeat: no-repeat;
-      background-position: center center;
-    }
-
-    &_left {
-      &::after,
-      &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-repeat: no-repeat;
-        background-position: center center;
-        transition: all 0.35s ease-in-out;
-      }
-
-      &::after {
-        opacity: 1;
-        background-image: url("https://www.technodom.kz/under/techno-tinder/cancel-off.png"), linear-gradient(150deg, #FFF 0%, #E7E7E7 48.44%, #F1F1F1 100%);
-      }
-
-      &::before {
-        opacity: 0;
-        background-image: url("https://www.technodom.kz/under/techno-tinder/cancel-active.png"), linear-gradient(150deg, #FF8E4F 0%, #FF3951 32.5%, #FF1E66 68.5%, #FF8E4F 100%);
-      }
-
-      &:hover {
-        &::after {
-          opacity: 0;
-        }
-
-        &::before {
-          opacity: 1;
-        }
-      }
-    }
-
-    &_right {
-      &::after,
-      &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-repeat: no-repeat;
-        background-position: center center;
-        transition: all 0.35s ease-in-out;
-      }
-
-      &::after {
-        opacity: 1;
-        background-image: url("https://www.technodom.kz/under/techno-tinder/like-off.png"), linear-gradient(150deg, #FFF 0%, #E7E7E7 48.44%, #F1F1F1 100%);
-      }
-
-      &::before {
-        opacity: 0;
-        background-image: url("https://www.technodom.kz/under/techno-tinder/like-active.png"), linear-gradient(150deg, #32F1FD 0%, #4CBCFD 34.5%, #0085FF 72.35%, #32F1FD 100%);
-      }
-
-      &:hover {
-        &::after {
-          opacity: 0;
-        }
-
-        &::before {
-          opacity: 1;
-        }
-      }
-    }
   }
 }
