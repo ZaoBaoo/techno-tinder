@@ -6,11 +6,12 @@ import Confetti from 'react-confetti';
 import { Header } from '../Header/Header';
 import { Tinder } from '../Tinder/Tinder';
 import { fetchProducts } from '../../store/reducers/products';
-import { useAppDispatch } from '../../hooks/store';
+import { useAppDispatch, useAppSelector } from '../../hooks/store';
 
 const App: FC = () => {
-  const dispatch = useAppDispatch();
   const [runConfetti, setRunConfetti] = useState(false);
+
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -24,11 +25,11 @@ const App: FC = () => {
     wind: -1,
   };
 
-  useEffect(() => {
-    setTimeout(() => {
-      setRunConfetti(true);
-    }, 2000);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setRunConfetti(true);
+  //   }, 2000);
+  // }, []);
 
   return (
     <div className="app">

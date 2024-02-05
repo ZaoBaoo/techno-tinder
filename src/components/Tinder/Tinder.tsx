@@ -17,6 +17,7 @@ const Tinder: FC = () => {
   const [index, setIndex] = useState(0);
   const [typeHover, setTypeHover] = useState<IHoverOnMouse>(null);
   const [isLoaderView, setIsLoaderView] = useState(true);
+  const [startMatchAnimate, setStartMatchAnimate] = useState(false);
 
   const { stage } = useAppSelector((state) => state.app);
   const { isProductsRequest, products } = useAppSelector((state) => state.products);
@@ -44,9 +45,14 @@ const Tinder: FC = () => {
     setTypeHover(type);
   };
 
+  const handlerMatch = () => {
+    dispatch(setStageAction('view'));
+    setStartMatchAnimate(false);
+  };
+
   const handlerSwipe = (value: IHoverOnMouse) => {
     if (value === 'right') {
-      dispatch(setStageAction('view'));
+      setStartMatchAnimate(true);
       hoverOnMouseOver(null);
     } else {
       dispatch(setSwipeTypeAction(value));
@@ -61,6 +67,12 @@ const Tinder: FC = () => {
   return (
     <div className="tinder">
       <LoaderTinder isLoaderView={isLoaderView} />
+      <img
+        className={`tinder__match ${startMatchAnimate && 'tinder__match_animate'}`}
+        src="https://www.technodom.kz/under/techno-tinder/match.png"
+        alt=""
+        onAnimationEnd={handlerMatch}
+      />
       {isProductsRequest || (
         <div className="tinder__control" style={{ opacity: isLoaderView ? '0' : '1' }}>
           <ButtonSwipe
@@ -74,11 +86,12 @@ const Tinder: FC = () => {
             className={`tinder__wrapper-inner-card ${
               stage === 'swipe' ? 'tinder__wrapper-inner-card_default' : 'tinder__wrapper-inner-card_absolute'
             }`}
+            onAnimationEnd={() => setIsLoaderView(false)}
           >
             <div className={`tinder__inner-card hover-target-element hover-rotate-animate-${typeHover}`}>
               <motion.div style={{ position: 'relative' }}>
                 <AnimatePresence initial={false}>
-                  <Card key={index + 1} frontCard={false} products={products} />
+                  <Card key={index + 1} frontCard={false} products={products} index={index + 1} />
                   <Card
                     key={index}
                     frontCard
@@ -98,10 +111,7 @@ const Tinder: FC = () => {
               />
             </div>
 
-            <div
-              className={`tinder__like ${stage === 'swipe' ? 'fadeIn' : 'fadeOut'}`}
-              onAnimationEnd={() => setIsLoaderView(false)}
-            >
+            <div className={`tinder__like ${stage === 'swipe' ? 'fadeIn' : 'fadeOut'}`}>
               <img
                 className={`tinder__image ${handlerAnimate('right')}`}
                 src="https://www.technodom.kz/under/techno-tinder/sticker-like.png"

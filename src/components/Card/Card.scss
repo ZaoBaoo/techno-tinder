@@ -6,11 +6,23 @@
   background-position: center center;
   background-size: contain;
 
+  @media (max-width: 700px) {
+    border-radius: 24px;
+    background-image: linear-gradient(150deg, #DCDCDC 0%, #FFF 58.35%, #E1E1E1 100%);
+    box-shadow: 0 14px 16px 0 rgba(187, 0, 0, 0.20);
+    padding: 0;
+    overflow: hidden;
+  }
+
   &__place {
     background-color: #FFF;
     border-radius: 40px;
     overflow: hidden;
     padding: 24px 32px 12px;
+
+    @media (max-width: 700px) {
+      border-radius: initial;
+    }
   }
 
   &__image {
@@ -31,8 +43,13 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     display: -webkit-box;
-    overflow: hidden;
     min-height: 58px;
+
+    @media (max-width: 700px) {
+      margin: 0;
+      padding: 16px 20px 0;
+      font-size: 16px;
+    }
   }
 
   &__footer {
@@ -41,6 +58,11 @@
     box-shadow: 0 7px 14px 0 rgba(90, 90, 90, 0.20);
     padding: 10px 21px;
     margin-top: 10px;
+
+    @media (max-width: 700px) {
+      margin: 8px 20px 20px;
+      padding: 10px 16px;
+    }
   }
 
   &__wrapper-price {
@@ -55,6 +77,10 @@
     color: #FFF;
     font-size: 16px;
     line-height: 120%;
+
+    @media (max-width: 700px) {
+
+    }
   }
 
   &__price {
@@ -62,6 +88,10 @@
     font-size: 35px;
     font-weight: 900;
     line-height: 120%;
+
+    @media (max-width: 700px) {
+      font-size: 24px;
+    }
   }
 
   &__old-price {
@@ -70,6 +100,10 @@
     font-weight: 300;
     line-height: 120%;
     opacity: 0.7;
+
+    @media (max-width: 700px) {
+      font-size: 16px;
+    }
 
     span {
       text-decoration: line-through;

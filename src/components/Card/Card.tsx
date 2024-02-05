@@ -4,7 +4,7 @@ import { motion, useMotionValue, useTransform, PanInfo } from 'framer-motion';
 import { useAppSelector } from '../../hooks/store';
 
 const Card = (props: any) => {
-  const { setIndex, index = 0, drag, frontCard, products } = props;
+  const { setIndex, index, drag, frontCard, products } = props;
   const [exitX, setExitX] = useState(0);
   const { swipeType, swipeIndex } = useAppSelector((state) => state.app);
 
@@ -49,6 +49,10 @@ const Card = (props: any) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [swipeType, swipeIndex]);
 
+  useEffect(() => {
+    console.log(frontCard ? 'Верхняя' : 'Нижняя', index);
+  }, [frontCard, index]);
+
   return (
     <motion.div
       style={{
@@ -78,7 +82,7 @@ const Card = (props: any) => {
       <motion.div>
         <div className="card">
           <div className="card__place">
-            <img className="card__image" src={products[index].image} alt="" />
+            <img className="card__image" src={products[index].image} alt="" width="336px" height="336px" />
           </div>
 
           <p className="card__text">{products[index].title}</p>
