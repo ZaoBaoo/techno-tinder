@@ -20,6 +20,7 @@
 
   &_left {
     left: 0;
+
     &::after,
     &::before {
       content: '';
@@ -40,7 +41,8 @@
 
     &::before {
       opacity: 0;
-      background-image: url("https://www.technodom.kz/under/techno-tinder/cancel-active.png"), linear-gradient(150deg, #FF8E4F 0%, #FF3951 32.5%, #FF1E66 68.5%, #FF8E4F 100%);
+      background-image: url("https://www.technodom.kz/under/techno-tinder/cancel-active.png"), linear-gradient(150.08deg, #32F1FD 0%, #4CBCFD 34.5%, #0085FF 72.35%, #32F1FD 100%);
+    ;
     }
 
     &:hover {
@@ -76,7 +78,8 @@
 
     &::before {
       opacity: 0;
-      background-image: url("https://www.technodom.kz/under/techno-tinder/like-active.png"), linear-gradient(150deg, #32F1FD 0%, #4CBCFD 34.5%, #0085FF 72.35%, #32F1FD 100%);
+      background-image: url("https://www.technodom.kz/under/techno-tinder/like-active.png"), linear-gradient(150.08deg, #FFC826 0%, #FFC826 0%, #FFE815 0.01%, #FCD23F 31%, #FFB800 78.5%, #FAC63F 100%);
+    ;
     }
 
     &:hover {

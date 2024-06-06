@@ -15,12 +15,14 @@ const Header: FC = () => {
           className="header__image"
           src="https://www.technodom.kz/under/techno-tinder/header-title.svg"
           alt="header"
-          width="596px"
-          height="74px"
+          width="400px"
+          height="50px"
         />
       </picture>
 
-      <h1 className="header__title">Выбирай себе пару и забирай промокод со скидкой!</h1>
+      <h1 className="header__title">
+        Выбирай себе пару и забирай <br /> промокод со скидкой!
+      </h1>
     </div>
   );
 };

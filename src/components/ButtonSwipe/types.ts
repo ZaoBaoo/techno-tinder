@@ -5,4 +5,5 @@ export interface IProps {
   handlerSwipe: (value: IHoverOnMouse) => void;
   hoverOnMouseOver: (value: IHoverOnMouse) => void;
   className?: string;
+  disabled?: boolean;
 }

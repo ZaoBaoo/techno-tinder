@@ -5,6 +5,10 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: contain;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.5s ease-in-out;
 
   @media (max-width: 700px) {
     border-radius: 24px;
@@ -12,6 +16,13 @@
     box-shadow: 0 14px 16px 0 rgba(187, 0, 0, 0.20);
     padding: 0;
     overflow: hidden;
+    display: block;
+    align-items: flex-start;
+  }
+
+  &_blur {
+    filter: blur(10px);
+    //opacity: 0.7;
   }
 
   &__place {
@@ -19,9 +30,38 @@
     border-radius: 40px;
     overflow: hidden;
     padding: 24px 32px 12px;
+    position: relative;
+
+    &::after,
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 30;
+      background-size: contain;
+      background-repeat: no-repeat;
+      width: 15px;
+      height: 21px;
+
+      @media (min-width: 700px) {
+        display: none;
+      }
+    }
+
+    &::before {
+      left: 16px;
+      background-image: url("https://www.technodom.kz/under/techno-tinder/arrow-back.svg");
+    }
+
+    &::after {
+      right: 16px;
+      background-image: url("https://www.technodom.kz/under/techno-tinder/arrow-next.svg");
+    }
 
     @media (max-width: 700px) {
-      border-radius: initial;
+      border-radius: 24px;
+      box-shadow: 0 16px 16px 0 #0000000D;
     }
   }
 
@@ -49,6 +89,8 @@
       margin: 0;
       padding: 16px 20px 0;
       font-size: 16px;
+      min-height: 55px;
+      text-align: left;
     }
   }
 
@@ -85,7 +127,7 @@
 
   &__price {
     color: #FFF;
-    font-size: 35px;
+    font-size: 32px;
     font-weight: 900;
     line-height: 120%;
 
@@ -96,7 +138,7 @@
 
   &__old-price {
     color: #FFF;
-    font-size: 26px;
+    font-size: 24px;
     font-weight: 300;
     line-height: 120%;
     opacity: 0.7;

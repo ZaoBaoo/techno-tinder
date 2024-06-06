@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { API } from '../../utils/API';
 import { IProduct } from '../../types';
 import { ALMATY_CITY_ID } from '../../constants';
@@ -6,11 +6,13 @@ import { transformNumberToString } from '../../utils/transformNumberToString';
 
 interface IProductsState {
   isProductsRequest: boolean;
+  isRepeatedRequest: boolean;
   products: IProduct[];
 }
 
 const initialState: IProductsState = {
   isProductsRequest: true,
+  isRepeatedRequest: false,
   products: [],
 };
 
@@ -55,17 +57,22 @@ export const fetchProducts = createAsyncThunk('products/fetchData', async () => 
 export const slice = createSlice({
   name: 'products',
   initialState,
-  reducers: {},
+  reducers: {
+    setIsRepeatedRequest: (state, action: PayloadAction<boolean>) => {
+      state.isRepeatedRequest = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
       state.isProductsRequest = false;
-      state.products = action.payload;
+      state.isRepeatedRequest = false;
+      state.products.push(...action.payload);
     });
   },
 });
 
 const { actions, reducer } = slice;
 
-// export const {} = actions;
+export const { setIsRepeatedRequest } = actions;
 
 export default reducer;

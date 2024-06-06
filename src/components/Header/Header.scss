@@ -2,22 +2,30 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 32px;
+  gap: 16px;
 
   @media (max-width: 700px) {
-    gap: 16px;
+    gap: 8px;
   }
 
   &__image {
-
+    width: auto;
   }
 
   &__title {
     color: #FFF;
     text-align: center;
-    font-size: 36px;
+    font-size: 30px;
     font-weight: 300;
-    line-height: 100%;
+    line-height: 130%;
+
+    br {
+      display: none;
+
+      @media (max-width: 700px) {
+        display: block;
+      }
+    }
 
     @media (max-width: 700px) {
       font-size: 16px;

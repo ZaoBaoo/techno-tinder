@@ -71,12 +71,77 @@ body {
     }
   }
 
+  @keyframes fadeInPromocodeView {
+    0% {
+      opacity: 0;
+      transform: translateX(150%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeOutPromocodeView {
+    0% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(150%);
+    }
+  }
+
+  @keyframes jumpAnimation {
+    0%, 100% {
+      transform: translate(0, 0);
+    }
+    25% {
+      transform: translate(-30px, -4px);
+    }
+    50% {
+      transform: translate(0, 0);
+    }
+    75% {
+      transform: translate(30px, -4px);
+    }
+  }
+
+  .jump {
+    @media (max-width: 700px) {
+      animation: jumpAnimation 4s infinite;
+
+      //&::before {
+      //  position: absolute;
+      //  top: 0;
+      //  left: 0;
+      //  z-index: 10;
+      //  content: '';
+      //  width: 100%;
+      //  height: 100%;
+      //  background-image: url("https://www.technodom.kz/under/techno-tinder/like-dislike.png");
+      //  background-size: contain;
+      //  background-repeat: no-repeat;
+      //  background-position: top;
+      //}
+    }
+  }
+
   .fadeOut {
     animation: fadeOut 0.5s ease-in-out forwards;
   }
 
   .fadeIn {
     animation: fadeIn 0.5s ease-in-out forwards;
+  }
+
+  .fadeOutPromocodeView {
+    animation: fadeOutPromocodeView 0.5s ease-in-out forwards;
+  }
+
+  .fadeInPromocodeView {
+    animation: fadeInPromocodeView 0.5s ease-in-out forwards;
   }
 
   .loader-wrapper {
@@ -88,8 +153,8 @@ body {
   }
 
   .loader {
-    width: 180px;
-    height: 30px;
+    width: 140px;
+    height: 23px;
     border-radius: 20px;
     color: #fff;
     border: 2px solid;

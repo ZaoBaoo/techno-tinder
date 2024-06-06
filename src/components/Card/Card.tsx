@@ -2,10 +2,23 @@ import './Card.scss';
 import { useEffect, useState } from 'react';
 import { motion, useMotionValue, useTransform, PanInfo } from 'framer-motion';
 import { useAppSelector } from '../../hooks/store';
+import formatNumber from '../../utils/formatNumber';
 
 const Card = (props: any) => {
-  const { setIndex, index, drag, frontCard, products } = props;
+  const {
+    setIndex,
+    index,
+    drag,
+    frontCard,
+    products,
+    handlerSwipe,
+    className = '',
+    isBlurActive,
+    disableTooltips = () => {},
+    setBlur = () => {},
+  } = props;
   const [exitX, setExitX] = useState(0);
+
   const { swipeType, swipeIndex } = useAppSelector((state) => state.app);
 
   const x = useMotionValue(0);
@@ -29,13 +42,20 @@ const Card = (props: any) => {
   };
 
   function handleDragEnd(_: any, info: PanInfo): void {
+    disableTooltips(false);
+
     if (info.offset.x < -100) {
       setExitX(-250);
       setIndex(index + 1);
     }
-    if (info.offset.x > 100) {
-      setExitX(250);
-      setIndex(index + 1);
+
+    if (window.innerWidth < 700) {
+      if (info.offset.x > 100) {
+        handlerSwipe('right');
+
+        setExitX(250);
+        setIndex(index + 1);
+      }
     }
   }
 
@@ -48,10 +68,6 @@ const Card = (props: any) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [swipeType, swipeIndex]);
-
-  useEffect(() => {
-    console.log(frontCard ? 'Верхняя' : 'Нижняя', index);
-  }, [frontCard, index]);
 
   return (
     <motion.div
@@ -80,7 +96,7 @@ const Card = (props: any) => {
       }
     >
       <motion.div>
-        <div className="card">
+        <div className={`card ${className} ${frontCard || 'card_blur'} ${isBlurActive && 'card_blur'}`}>
           <div className="card__place">
             <img className="card__image" src={products[index].image} alt="" width="336px" height="336px" />
           </div>
@@ -88,13 +104,13 @@ const Card = (props: any) => {
           <p className="card__text">{products[index].title}</p>
 
           <div className="card__footer">
-            <p className="card__text-price">цена по промокоду:</p>
+            <p className="card__text-price">Цена по промокоду:</p>
             <div className="card__wrapper-price">
               <p className="card__price">
-                <span>{products[index].newPrice}</span> ₸
+                <span>{formatNumber(products[index].newPrice)}</span> ₸
               </p>
               <p className="card__old-price">
-                <span>{products[index].oldPrice}</span> ₸
+                <span>{formatNumber(products[index].oldPrice)}</span> ₸
               </p>
             </div>
           </div>
@@ -105,3 +121,5 @@ const Card = (props: any) => {
 };
 
 export { Card };
+
+// ${frontCard && isBlurActive ? 'card_blur' : ''}

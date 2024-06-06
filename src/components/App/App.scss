@@ -8,10 +8,87 @@
   align-items: center;
   background-color: #FB6A3E;
   padding: 88px 0 120px;
+  position: relative;
 
   @media (max-width: 700px) {
-      padding: 40px 0 100px;
-    justify-content: initial;
+    min-height: 115vh;
+  }
+
+  &__decor-fire-wrapper {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-410%);
+
+    img {
+      width: 214px;
+      height: 250px;
+      animation: pulseFastAnimation 0.5s ease 0s infinite alternate forwards;
+    }
+  }
+
+  &__decor-smile-wrapper {
+    position: absolute;
+    top: 20%;
+    right: 50%;
+    transform: translateX(410%);
+
+    img {
+      width: 184px;
+      height: 184px;
+      animation: rotateAnimation 5s ease 0s infinite alternate forwards;
+    }
+  }
+
+  @keyframes pulseFastAnimation {
+    0% {
+      transform: scale(1)
+    }
+    to {
+      transform: scale(.9)
+    }
+  }
+
+  @keyframes rotateAnimation {
+    0% {
+      transform: rotate(0) scale(1);
+      transform-origin: 50% 50%
+    }
+    to {
+      transform-origin: 50% 50%;
+      transform: rotate(8deg);
+    }
+    10% {
+      transform: rotate(8deg);
+    }
+    20%,40%,60% {
+      transform: rotate(-10deg);
+    }
+    30%,50% {
+      transform: rotate(10deg);
+    }
+    70% {
+      transform: rotate(-8deg);
+    }
+    70% {
+      transform: scale(0.8);
+    }
+  }
+
+  &_bg-left-top {
+    background-image: url("https://www.technodom.kz/under/techno-tinder/main-decor-left-top.svg");
+    background-position: left top;
+    background-repeat: no-repeat;
+  }
+
+  &_bg-center {
+    background-image: url("https://www.technodom.kz/under/techno-tinder/main-decor-center.svg");
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  @media (max-width: 700px) {
+    padding: 40px 0 100px;
     align-items: initial;
   }
 
@@ -21,7 +98,8 @@
     gap: 64px;
 
     @media (max-width: 700px) {
-      gap: 32px;
+      gap: 24px;
+      width: 100%;
     }
   }
 }

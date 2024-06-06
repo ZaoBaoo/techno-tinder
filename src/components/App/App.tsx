@@ -1,55 +1,41 @@
 import './App.scss';
-import { FC, useEffect, useState } from 'react';
-import Confetti from 'react-confetti';
+import { FC, useEffect } from 'react';
 
 // Components
 import { Header } from '../Header/Header';
 import { Tinder } from '../Tinder/Tinder';
 import { fetchProducts } from '../../store/reducers/products';
-import { useAppDispatch, useAppSelector } from '../../hooks/store';
+import { useAppDispatch } from '../../hooks/store';
 
 const App: FC = () => {
-  const [runConfetti, setRunConfetti] = useState(false);
-
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  const confettiConfig = {
-    width: window.innerWidth,
-    height: window.innerHeight,
-    recycle: false,
-    gravity: 0.5,
-    wind: -1,
-  };
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setRunConfetti(true);
-  //   }, 2000);
-  // }, []);
-
   return (
-    <div className="app">
+    <div className="app app_bg-left-top app_bg-center">
       <div className="app__content">
         <Header />
         <Tinder />
-        <Confetti
-          width={window.innerWidth}
-          height={window.innerHeight}
-          confettiSource={{
-            w: 1,
-            h: 1,
-            x: window.innerWidth / 2,
-            y: window.innerHeight,
-          }}
-          numberOfPieces={200}
-          recycle={false}
-          run={runConfetti}
-          initialVelocityX={10}
-          initialVelocityY={20}
+      </div>
+      <div className="app__decor-fire-wrapper">
+        <img
+          className="app__decor-fire"
+          src="https://www.technodom.kz/under/techno-tinder/decor-fire.png"
+          alt=""
+          width="214px"
+          height="250px"
+        />
+      </div>
+      <div className="app__decor-smile-wrapper">
+        <img
+          className="app__decor-smile"
+          src="https://www.technodom.kz/under/techno-tinder/decor-smile.png"
+          alt=""
+          width="184px"
+          height="184px"
         />
       </div>
     </div>
