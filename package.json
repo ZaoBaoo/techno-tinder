@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://ZaoBaoo.github.io/techno-tinder",
   "scripts": {
     "dev": "vite --host",
     "build": "tsc && vite build",
@@ -10,12 +11,15 @@
     "test": "vitest",
     "lint": "eslint --ext .js,.cjs,.ts,.tsx .",
     "lint:fix": "eslint --ext .js,.cjs,.ts,.tsx . --fix",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.8.2",
     "clsx": "^2.1.0",
     "framer-motion": "^12.15.0",
+    "gh-pages": "^6.3.0",
     "react": "^19.1.0",
     "react-confetti": "^6.1.0",
     "react-dom": "^19.1.0",
