@@ -7,11 +7,11 @@ import { Tinder } from '../Tinder/Tinder';
 import { fetchProducts } from '../../store/reducers/products';
 import { useAppDispatch } from '../../hooks/store';
 
-// window.localStorage.setItem('locale', 'ru');
-// window.localStorage.setItem(
-//   'cityMagentoId',
-//   JSON.stringify({ data: '10', expiration: 604800, createdAt: 1748789961090 })
-// );
+window.localStorage.setItem('locale', 'ru');
+window.localStorage.setItem(
+  'cityMagentoId',
+  JSON.stringify({ data: '10', expiration: 604800, createdAt: 1748789961090 })
+);
 
 const App: FC = () => {
   const dispatch = useAppDispatch();

@@ -7,6 +7,7 @@ import checker from 'vite-plugin-checker';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: './',
   server: {
     open: true,
     port: 8080,
