@@ -128,10 +128,14 @@ const Tinder: FC = () => {
             className={`tinder__wrapper-inner-card ${
               stage === 'swipe' ? 'tinder__wrapper-inner-card_default' : 'tinder__wrapper-inner-card_absolute'
             }`}
+            style={{ willChange: 'transform' }}
             onAnimationEnd={() => setIsLoaderView(false)}
           >
-            <div className={`tinder__inner-card hover-target-element hover-rotate-animate-${typeHover}`}>
-              <motion.div style={{ position: 'relative' }}>
+            <div
+              className={`tinder__inner-card hover-target-element hover-rotate-animate-${typeHover}`}
+              style={{ willChange: 'transform' }}
+            >
+              <motion.div style={{ position: 'relative', willChange: 'transform' }}>
                 <AnimatePresence initial={false}>
                   <Card key={index + 1} frontCard={false} products={products} index={index + 1} />
                   <Card

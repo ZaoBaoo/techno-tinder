@@ -45,7 +45,7 @@ const PromocodeView: FC<IPromocodeView> = ({ className, handlerSwitchStage, acti
   }, [products, index]);
 
   return (
-    <div className={`promocodeView ${className}`}>
+    <div className={`promocodeView ${className}`} style={{ willChange: 'transform' }}>
       <div className="promocodeView__product-mob">
         <img className="promocodeView__product-mob-image" src={product?.image} alt="" width="103px" height="103px" />
         <div className="promocodeView__product-mob-wrapper">
@@ -75,7 +75,7 @@ const PromocodeView: FC<IPromocodeView> = ({ className, handlerSwitchStage, acti
         <a
           className="promocodeView__link"
           href={`https://www.technodom.kz/p/${product?.uri}`}
-          target="_blank"
+          // target="_blank"
           rel="noreferrer"
         >
           К товару

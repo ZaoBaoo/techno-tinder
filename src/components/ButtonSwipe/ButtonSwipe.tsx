@@ -23,6 +23,7 @@ const ButtonSwipe: FC<IProps> = ({ type, handlerSwipe, hoverOnMouseOver, classNa
       onClick={handlerClick}
       onMouseOver={() => hoverOnMouseOver(type)}
       onMouseLeave={() => hoverOnMouseOver(null)}
+      style={{ willChange: 'transform' }}
     />
   );
 };

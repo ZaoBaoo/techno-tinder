@@ -1,5 +1,4 @@
 /* eslint-disable import/no-extraneous-dependencies */
-/// <reference types="vitest" />
 /// <reference types="vite/client" />
 
 import { defineConfig } from 'vite';
@@ -18,9 +17,4 @@ export default defineConfig({
       typescript: true,
     }),
   ],
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: ['./src/setupTests.ts'],
-  },
 });

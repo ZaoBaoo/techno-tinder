@@ -1,5 +1,6 @@
 import { BASE_URL } from '../constants';
 import { ICityList, IProductsRequest, IPromocodeTinder } from '../types';
+import { mockPromocodes } from '../data/mockPromocodes';
 
 export class API {
   static getCityList(): Promise<ICityList> {
@@ -12,12 +13,13 @@ export class API {
   }
 
   static getPromocodes(cityId: string): Promise<IPromocodeTinder[]> {
-    return new Promise((resolve, reject) => {
-      fetch(`${BASE_URL}technodom/product/new_year_2023?city_id=${cityId}`)
-        .then((res) => res.json())
-        .then((data) => resolve(data))
-        .catch((err) => reject(err));
-    });
+    return Promise.resolve(mockPromocodes);
+    // return new Promise((resolve, reject) => {
+    //   fetch(`${BASE_URL}technodom/product/new_year_2023?city_id=${cityId}`)
+    //     .then((res) => res.json())
+    //     .then((data) => resolve(data))
+    //     .catch((err) => reject(err));
+    // });
   }
 
   static getProducts(cityId: string, arraySkus: string[]): Promise<IProductsRequest> {

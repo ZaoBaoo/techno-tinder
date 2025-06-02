@@ -77,6 +77,7 @@ const Card = (props: any) => {
         x,
         rotate,
         cursor: 'grab',
+        willChange: 'transform',
       }}
       whileTap={{ cursor: 'grabbing' }}
       // Dragging
@@ -95,8 +96,11 @@ const Card = (props: any) => {
           : { scale: { duration: 2.2 }, opacity: { duration: 2.4 } }
       }
     >
-      <motion.div>
-        <div className={`card ${className} ${frontCard || 'card_blur'} ${isBlurActive && 'card_blur'}`}>
+      <motion.div style={{ willChange: 'transform' }}>
+        <div
+          className={`card ${className} ${frontCard || 'card_blur'} ${isBlurActive && 'card_blur'}`}
+          style={{ willChange: 'transform' }}
+        >
           <div className="card__place">
             <img className="card__image" src={products[index].image} alt="" width="336px" height="336px" />
           </div>
@@ -121,5 +125,3 @@ const Card = (props: any) => {
 };
 
 export { Card };
-
-// ${frontCard && isBlurActive ? 'card_blur' : ''}
