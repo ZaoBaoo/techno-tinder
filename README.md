@@ -1,4 +1,4 @@
-# Techno Tinder 💘🛒
+# 💘🛒 Techno Tinder 
 
 ![Превью](public/img.png)
 
